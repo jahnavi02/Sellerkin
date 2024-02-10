@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Email Subscription Form</title>
+</head>
+<body>
+    <h2>Subscribe to Our Newsletter</h2>
+    <form id="subscriptionForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <button type="submit">Subscribe</button>
+    </form>
+
+    <script>
+        document.getElementById('subscriptionForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent form from submitting normally
+
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+
+            try {
+                const response = await fetch('/send-email', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({ to: email, firstName: name })
+                });
+
+                if (response.ok) {
+                    alert('Subscription successful! Check your email for confirmation.');
+                } else {
+                    alert('Failed to subscribe. Please try again later.');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('An error occurred. Please try again later.');
+            }
+        });
+    </script>
+</body>
+</html>
