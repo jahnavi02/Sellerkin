@@ -24,7 +24,7 @@ app.post('/send-email', async (req, res) => {
             secure: false, // true for 465, false for other ports
             auth: {
                 user: 'jahnavig310@gmail.com', // your Brevo SMTP user
-                pass: 'xsmtpsib-84363148d0b7cd9a6044f67f359aec927acdf006f586636173e11da432f33777-OAQ3LC6HrVbhnwkz' // your Brevo SMTP password
+                pass: 'xsmtpsib-84363148d0b7cd9a6044f67f359aec927acdf006f586636173e11da432f33777-HUxXFrNy2GWPaqK9' // your Brevo SMTP password
             }
         });
 
